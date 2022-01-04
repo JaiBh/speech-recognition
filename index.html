@@ -5,7 +5,7 @@
   <title>Speech Detection</title>
 </head>
 <body>
-
+  <button class="reset">Reset</button>
   <div class="words" contenteditable>
   </div>
 
@@ -14,7 +14,7 @@
 
 const recognition = new SpeechRecognition();
   recognition.interimResults = true;
-  recognition.lang = 'en-US';
+  recognition.lang = 'en-Uk';
   
   let p = document.createElement('p');
   const words = document.querySelector('.words');
@@ -31,6 +31,10 @@ const recognition = new SpeechRecognition();
       p = document.createElement("p")
       words.appendChild(p)
     }
+})
+const reset = document.querySelector(".reset")
+reset.addEventListener("click", function(){
+  words.textContent = "";
 })
 
 recognition.addEventListener('end', recognition.start);
@@ -53,6 +57,7 @@ recognition.start();
     .words {
       max-width: 500px;
       margin: 50px auto;
+      margin-top: 20px;
       background: white;
       border-radius: 5px;
       box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
@@ -76,6 +81,13 @@ recognition.start();
       bottom: 0;
       border: 1px solid;
       border-color: transparent #efe4e4;
+    }
+    .reset{
+      display: grid;
+      background-color: none;
+      border: solid 4px orange;
+      padding: 1rem 1.25rem;
+      margin: 0 auto;
     }
   </style>
 
